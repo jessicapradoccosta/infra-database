@@ -1,7 +1,7 @@
 provider "aws" {
   region = var.region
-  access_key = "="
-  secret_key = ""
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
 }
 
 data "aws_availability_zones" "available" {}
@@ -76,9 +76,3 @@ resource "aws_db_instance" "education" {
 
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
-
-provider "aws" {
-  region = var.region
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
-}
