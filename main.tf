@@ -73,3 +73,12 @@ resource "aws_db_instance" "education" {
   publicly_accessible    = true
   skip_final_snapshot    = true
 }
+
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
+
+provider "aws" {
+  region = var.region
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
+}
