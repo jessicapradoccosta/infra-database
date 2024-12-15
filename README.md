@@ -57,7 +57,7 @@ O banco de dados escolhido foi o **PostgreSQL** devido às suas seguintes caract
 
 ![diagram-12769160281402205183](https://github.com/user-attachments/assets/fcff4292-f1f0-42df-9aa9-12690702ede1)
 
-## 2. Observações Finais
+## 5. Observações Finais
 
 - **Tipos de Dados**: Todos os tipos de dados foram escolhidos para garantir o melhor desempenho e precisão. Por exemplo, o tipo `DECIMAL` foi usado para valores monetários (preço e total de pedidos) e `TIMESTAMP` para armazenar a data e hora dos pedidos.
 - **Normalização**: O modelo segue os princípios de normalização, evitando redundâncias e garantindo que os dados sejam armazenados de maneira eficiente.
