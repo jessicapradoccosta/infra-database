@@ -1,17 +1,11 @@
 output "rds_hostname" {
-  description = "RDS instance hostname"
-  value       = aws_db_instance.education.address
-  sensitive   = true
+  value = aws_db_instance.lanchonete_fiap.address
 }
 
 output "rds_port" {
-  description = "RDS instance port"
-  value       = aws_db_instance.education.port
-  sensitive   = true
+  value = aws_db_instance.lanchonete_fiap.port
 }
 
 output "rds_username" {
-  description = "RDS instance root username"
-  value       = aws_db_instance.education.username
-  sensitive   = true
+  value = aws_db_instance.lanchonete_fiap.username
 }
