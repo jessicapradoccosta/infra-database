@@ -9,7 +9,7 @@ data "aws_availability_zones" "available" {}
 module "vpc" {
   source              = "terraform-aws-modules/vpc/aws"
   version             = ">= 3.0.0"
-  name                = "lanchonete-fiap"
+  name                = "lanchonete-fiap-2"
   cidr                = "10.0.0.0/16"
   azs                 = data.aws_availability_zones.available.names
   public_subnets      = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
@@ -17,17 +17,17 @@ module "vpc" {
   enable_dns_support   = true
 }
 
-resource "aws_db_subnet_group" "lanchonete_fiap" {
-  name       = "lanchonete-fiap"
+resource "aws_db_subnet_group" "lanchonete_fiap_2" {
+  name       = "lanchonete-fiap-2"
   subnet_ids = module.vpc.public_subnets
 
   tags = {
-    Name = "Lanchonete Fiap"
+    Name = "Lanchonete Fiap 2"
   }
 }
 
 resource "aws_security_group" "rds" {
-  name   = "lanchonete_fiap_rds"
+  name   = "lanchonete_fiap_rds_2"
   vpc_id = module.vpc.vpc_id
 
   ingress {
@@ -45,12 +45,12 @@ resource "aws_security_group" "rds" {
   }
 
   tags = {
-    Name = "lanchonete_fiap_rds"
+    Name = "lanchonete_fiap_rds_2"
   }
 }
 
-resource "aws_db_parameter_group" "lanchonete_fiap" {
-  name   = "lanchonete-fiap"
+resource "aws_db_parameter_group" "lanchonete_fiap_2" {
+  name   = "lanchonete-fiap-2"
   family = "postgres16"
 
   parameter {
@@ -59,17 +59,17 @@ resource "aws_db_parameter_group" "lanchonete_fiap" {
   }
 }
 
-resource "aws_db_instance" "lanchonete_fiap" {
-  identifier             = "lanchonete-fiap"
+resource "aws_db_instance" "lanchonete_fiap_2" {
+  identifier             = "lanchonete-fiap-2"
   instance_class         = "db.t3.micro"
   allocated_storage      = 5
   engine                 = "postgres"
   engine_version         = "16.4"
   username               = "edu"
   password               = var.db_password
-  db_subnet_group_name   = aws_db_subnet_group.lanchonete_fiap.name
+  db_subnet_group_name   = aws_db_subnet_group.lanchonete_fiap_2.name
   vpc_security_group_ids = [aws_security_group.rds.id]
-  parameter_group_name   = aws_db_parameter_group.lanchonete_fiap.name
+  parameter_group_name   = aws_db_parameter_group.lanchonete_fiap_2.name
   publicly_accessible    = true
   skip_final_snapshot    = true
 }
